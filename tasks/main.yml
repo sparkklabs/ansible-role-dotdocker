@@ -29,11 +29,7 @@
     dotdocker_virtual_host: "{{ dotdocker_project_name }}.localhost"
   when: dotdocker_virtual_host is undefined
 
-- include_tasks: setup-MacOSX.yml
-  when: ansible_distribution == 'MacOSX'
-
-- include_tasks: setup-Debian.yml
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- include_tasks: setup.yml
 
 - name: Ensures docker images are up to date
   command: docker-compose build
